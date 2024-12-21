@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then(() => {
+      window.location.href = "/";
+    });
+  };
   return (
     <div>
       <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black ">
@@ -138,23 +146,24 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-2">
         
-          {/* {user && user?.email ? ( */}
+          {user && user?.email ? (
           <div className="flex items-center space-x-4">
-            <img src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000" className="w-5 h-5" alt="" />
-            <button className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
+                            <img src={user?.photoURL} referrerPolicy="no-referrer" className="w-12 rounded-full cursor-pointer" />
+
+            <button onClick={handleLogOut}  className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
               Logout
             </button>
           </div>
-          {/* ) : ( */}
+           ) : ( 
           <>
-            <Link className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4] ">
+            <Link to="/auth/login"  className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4] ">
               Login
             </Link>
-            <Link className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
+            <Link  to="/auth/register" className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
               Registration
             </Link>
           </>
-          {/* )} */}
+          )}
         </div>
       </div>
     </div>
