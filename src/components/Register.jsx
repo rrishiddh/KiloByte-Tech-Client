@@ -70,9 +70,12 @@ const Register = () => {
     }
     if (!/[A-Z]/.test(password)) {
       return "Password must include at least 1 uppercase letter.";
+    }    
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return "Password must include at least 1 special character.";
     }
-    if (!/[a-z]/.test(password)) {
-      return "Password must include at least 1 lowercase letter.";
+    if (!/[0-9]/.test(password)) {
+      return "Password must include at least 1 numeric character.";
     }
     return null;
   };
