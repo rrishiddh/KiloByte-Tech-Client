@@ -156,10 +156,10 @@ const Navbar = () => {
           </div>
            ) : ( 
           <>
-            <Link to="/auth/login"  className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4] ">
+            <Link to="/auth/login"  className="btn max-sm:btn-sm bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4] ">
               Login
             </Link>
-            <Link  to="/auth/register" className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
+            <Link  to="/auth/register" className="btn max-sm:btn-sm bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
               Registration
             </Link>
           </>

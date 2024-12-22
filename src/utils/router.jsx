@@ -12,55 +12,56 @@ import FeaturedBlogs from "../components/FeaturedBlogs";
 import WishList from "../components/WishList";
 import PrivateRoute from "./PrivateRoute";
 
-
-
 const router = createBrowserRouter([
-    {
-        path : "/",
-        element : <MainLayout></MainLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children:[
-            {
-                path: "/",
-                element : <Home></Home>,
-                loader: ()=> fetch('http://localhost:5000/allBlog')
-
-            },
-            {
-              path: "/addBlog",
-              element : <PrivateRoute>
-                <AddBlog></AddBlog>
-              </PrivateRoute> ,
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/allBlog"),
+      },
+      {
+        path: "/addBlog",
+        element: (
+          <PrivateRoute>
+            <AddBlog></AddBlog>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allBlogs",
+        element: <AllBlogs></AllBlogs>,
+      },
+      {
+        path: "/featuredBlogs",
+        element: <FeaturedBlogs></FeaturedBlogs>,
+      },
+      {
+        path: "/wishList",
+        element: (
+          <PrivateRoute>
+            <WishList></WishList>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "auth",
+        element: <AuthLayout></AuthLayout>,
+        children: [
+          {
+            path: "/auth/login",
+            element: <Login></Login>,
           },
           {
-            path: "/allBlogs",
-            element : <AllBlogs></AllBlogs>,
-        },
-        {
-          path: "/featuredBlogs",
-          element : <FeaturedBlogs></FeaturedBlogs>,
+            path: "/auth/register",
+            element: <Register></Register>,
+          },
+        ],
       },
-        {
-          path: "/wishList",
-          element : <PrivateRoute>
-            <WishList></WishList>
-          </PrivateRoute>,
-      },
-            {
-                path: "auth",
-                element: <AuthLayout></AuthLayout>,
-                children : [
-                  {
-                    path: "/auth/login",
-                    element: <Login></Login>,
-                  },
-                  {
-                    path: "/auth/register",
-                    element: <Register></Register>,
-                  }                 
-                ]
-            },                       
-        ]
-    }
-])
+    ],
+  },
+]);
 export default router;
