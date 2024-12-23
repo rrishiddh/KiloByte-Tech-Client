@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 const AllBlogs = () => {
   const [allBlogPost, setAllBlogPost] = useState([]);
   const [filterBlogs, setFilterBlogs] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterCategory, setFilterCategory] = useState("All");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchBlogPost = async () => {
@@ -30,41 +32,49 @@ const AllBlogs = () => {
     setFilterBlogs(posts);
   }, [filterCategory, allBlogPost]);
 
-  const handleAddToWishlist = async (posts) => {
+  
+  const handleAddToWishlist = async (post) => {
+    const postData = {
+      postId: post._id,
+      title: post.title,
+      imageUrl: post.imageUrl,
+      category: post.category,
+      longDescription: post.longDescription,
+      shortDescription: post.shortDescription,
+      postingDate: post.postingDate,
+      userEmail: user.email,
+      userName: user.displayName,
+    };
+  
     await fetch("http://localhost:5000/wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(posts),
+      body: JSON.stringify(postData),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Added to WatchList successfully!",
-            icon: "success",
-          });
-        } else if (data.message === "Post is already in WishList") {
+        if (data.message === "Post is already in WishList") {
           Swal.fire({
             title: "This Post is already in your WishList.",
             icon: "warning",
           });
         } else {
           Swal.fire({
-            title: "Failed to add to WatchList. Try again!",
-            icon: "error",
+            title: "Added to WishList successfully!",
+            icon: "success",
           });
         }
       })
       .catch((error) => {
         Swal.fire({
-          title: `An error occurred while adding to WatchList. ${error}`,
+          title: `An error occurred while adding to WishList. ${error}`,
           icon: "error",
         });
       });
   };
-
+  
   return (
     <div>
       <div className="">
