@@ -7,7 +7,7 @@ const AddBlog = () => {
   const [formData, setFormData] = useState({
     title: "",
     imageUrl: "",
-    category: "",
+    category: "Cybersecurity",
     longDescription: "",
     shortDescription: "",
     postingDate: "",
@@ -20,7 +20,7 @@ const AddBlog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const currentDateTime = new Date().toLocaleString();
+    const currentDateTime = new Date().toISOString();
 
     const addToBlog = {
       ...formData,
@@ -37,13 +37,13 @@ const AddBlog = () => {
       .then((res) => res.json())
       .then(() => {
         Swal.fire({
-          title: "Blog Post Submitted Successfully!",
+          title: "Post Added Successfully!",
           icon: "success",
         });
         setFormData({
             title: "",
             imageUrl: "",
-            category: "",
+            category: "Cybersecurity",
             longDescription: "",
             shortDescription: "",
             postingDate: "",
@@ -119,13 +119,13 @@ const AddBlog = () => {
                       className="select select-bordered"
                       value={formData.category}
                       onChange={handleChange}
-                      defaultValue={'Cybersecurity'}
+                      required
                     >
                       <option value="Cybersecurity">Cybersecurity</option>
-                      <option value="ArtificialIntelligence">Artificial Intelligence</option>
-                      <option value="WebDevelopment">Web Development</option>
-                      <option value="SoftwareDevelopment">Software Development</option>
-                      <option value="GeneralTech">General Tech</option>
+                      <option value="Artificial Intelligence">Artificial Intelligence</option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="Software Development">Software Development</option>
+                      <option value="General Tech">General Tech</option>
                     </select>
                   </div>
 
