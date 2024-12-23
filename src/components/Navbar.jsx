@@ -77,7 +77,7 @@ const Navbar = () => {
                       src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000"
                       className="w-5 h-5"
                     />
-                    WatchList
+                    WishList
                   </NavLink>
                 </li>                
               </>
@@ -138,7 +138,7 @@ const Navbar = () => {
                       src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000"
                       className="w-5 h-5"
                     />
-                    WatchList
+                    WishList
                   </NavLink>
                 </li>                
               </>

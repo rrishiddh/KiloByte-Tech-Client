@@ -1,7 +1,54 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 const RecentBlogPost = () => {
     const recentBlog = useLoaderData();
+      const { user } = useContext(AuthContext);
+    
+
+     const handleAddToWishlist = async (post) => {
+        const postData = {
+          postId: post._id,
+          title: post.title,
+          imageUrl: post.imageUrl,
+          category: post.category,
+          longDescription: post.longDescription,
+          shortDescription: post.shortDescription,
+          postingDate: post.postingDate,
+          userEmail: user.email,
+          userName: user.displayName,
+        };
+      
+        await fetch("http://localhost:5000/wishList", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.message === "Post is already in WishList") {
+              Swal.fire({
+                title: "This Post is already in your WishList.",
+                icon: "warning",
+              });
+            } else {
+              Swal.fire({
+                title: "Added to WishList successfully!",
+                icon: "success",
+              });
+            }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: `An error occurred while adding to WishList. ${error}`,
+              icon: "error",
+            });
+          });
+      };
 
     return (
         <div className="my-10 w-[90%] mx-auto">
@@ -13,12 +60,12 @@ const RecentBlogPost = () => {
           <div className="card-body">
             <h2 className="card-title">{blog.title}</h2>
             <p className="font-medium">Category : {blog.category}</p>
-            <p className="text-sm">{blog.shortDescription}</p>
-            <div className="card-actions justify-end">
-            <Link>
+            <p className="text-sm">Description : {blog.shortDescription}</p>
+            <div className="card-actions justify-end flex">
+            <Link to={`/allBlogPosts/${blog._id}`}>
                   <button className="btn btn-sm btn-primary">Explore Details</button>
             </Link>
-            <Link>
+            <Link onClick={() => handleAddToWishlist(blog)}>
                   <button className="btn btn-sm btn-primary">Add to Wishlist</button>
             </Link>
             </div>

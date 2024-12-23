@@ -62,6 +62,7 @@ const router = createBrowserRouter([
             <WishList></WishList>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/wishList"),
       },
       {
         path: "auth",
