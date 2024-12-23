@@ -130,7 +130,7 @@ const AllBlogs = () => {
                     >
                       Add to Wishlist
                     </button>
-                    <Link to={`/allBlogs/${post._id}`}>
+                    <Link to={`/allBlogPosts/${post._id}`}>
                       <button className="btn btn-primary">
                         Explore Details
                       </button>

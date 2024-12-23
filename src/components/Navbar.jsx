@@ -148,7 +148,12 @@ const Navbar = () => {
         
           {user && user?.email ? (
           <div className="flex items-center space-x-4">
-                            <img src={user?.photoURL} referrerPolicy="no-referrer" className="w-12 rounded-full cursor-pointer" />
+            <div className="avatar">
+  <div className="ring-primary ring-offset-base-100 w-12 rounded-full ring ring-offset-2">
+  <img src={user?.photoURL} referrerPolicy="no-referrer" className="w-12 rounded-full cursor-pointer" />
+  </div>
+</div>
+                            
 
             <button onClick={handleLogOut}  className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
               Logout

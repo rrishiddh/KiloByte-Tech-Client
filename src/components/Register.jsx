@@ -4,10 +4,14 @@ import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2'
 
 const Register = () => {
-  const { setUser, createNewUser, updateUserProfile, signInWithGoogle } =
+  const { setUser, createNewUser, updateUserProfile, signInWithGoogle,logOut } =
     useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut()
+  };
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -31,9 +35,10 @@ const Register = () => {
           .then(() => {
             Swal.fire({
               title: "Successfully Register!",
-              text: `Welcome ${user.displayName}!`,
+              text: `Dear ${user.displayName}, Please Login Now!`,
               icon: "success"
             });
+            handleLogOut();
             navigate("/");
           })
           .catch((err) => {
@@ -53,9 +58,10 @@ const Register = () => {
         setUser(user);
         Swal.fire({
           title: "Successfully Register!",
-          text: `Welcome ${user.displayName}!`,
+          text: `Dear ${user.displayName}, Please Login Now!`,
           icon: "success"
         });
+        handleLogOut();
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
