@@ -1,15 +1,12 @@
 
 import { useContext, useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2';
 
 
 const WishList = () => {
-  const data = useLoaderData();
   const [myWishList, setMyWishList] = useState([]);
   const { user } = useContext(AuthContext);
-  const currentUserEmail = user.email;
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -23,25 +20,19 @@ const WishList = () => {
     });
   };
   useEffect(() => {
-    const filteredWishList = data.filter(
-      (wishList) => wishList.userEmail === currentUserEmail
-    );
+    if (user?.email) {
+      fetch(`http://localhost:5000/wishList?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setMyWishList(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching wishlist:", error);
+        });
+    }
+  }, [user]);
 
-    const uniqueWishList = [];
-    const seen = new Set();
-
-    filteredWishList.forEach((wishList) => {
-
-        if (!seen.has(wishList.postId)) {
-        seen.add(wishList.postId);
-        uniqueWishList.push(wishList);
-      }
-    });
-
-    setMyWishList(uniqueWishList);
-  }, [data, currentUserEmail]);
-
- const handleDelete = (id) => {
+  const handleDelete = (id) => {
     if (id) {
       fetch(`http://localhost:5000/wishList/${id}`, {
         method: "DELETE",
@@ -50,12 +41,10 @@ const WishList = () => {
         .then(() => {
           Swal.fire({
             title: "Deleted!",
-            text: "WishList deleted successfully!",
-            icon: "success"
+            text: "Wishlist item deleted successfully!",
+            icon: "success",
           });
-          const updatedWishList = myWishList.filter((wishList) => id != wishList._id);
-          setMyWishList(updatedWishList);
-          
+          setMyWishList(myWishList.filter((wishList) => wishList._id !== id));
         });
     }
   };

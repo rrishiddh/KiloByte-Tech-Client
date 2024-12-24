@@ -5,17 +5,6 @@ import { Link } from "react-router-dom";
 const FeaturedBlogs = () => {
   const [topBlogs, setTopBlogs] = useState([]);
 
-  const formatDate = (isoDate) => {
-    const date = new Date(isoDate);
-    return date.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-  };
   useEffect(() => {
     const fetchTopBlogs = async () => {
       try {
