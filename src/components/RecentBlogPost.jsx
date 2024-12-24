@@ -2,6 +2,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
+import { motion } from "motion/react"
+
 
 const RecentBlogPost = () => {
     const recentBlog = useLoaderData();
@@ -55,9 +57,12 @@ const RecentBlogPost = () => {
         <h1 className="text-center text-2xl font-bold my-6"> Checkout Some <br className="md:hidden" /> Recent Blog Post :</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
-         recentBlog.map((blog,idx) => <div key={idx} className="card card-compact bg-base-100 shadow-xl p-2">
+         recentBlog.map((blog,idx) => <motion.div
+         whileHover={{ scale: 1.1 }}
+         whileTap={{ scale: 0.9 }} key={idx} className="card card-compact bg-base-100 shadow-xl p-2">
           
-          <div className="card-body">
+          <div
+            className="card-body">
             <h2 className="card-title">{blog.title}</h2>
             <p className="font-medium">Category : {blog.category}</p>
             <p className="text-sm">Description : {blog.shortDescription}</p>
@@ -70,7 +75,7 @@ const RecentBlogPost = () => {
             </Link>
             </div>
           </div>
-        </div>)
+        </motion.div>)
         }
         </div>
   
