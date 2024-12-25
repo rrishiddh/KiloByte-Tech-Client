@@ -7,13 +7,17 @@ import {
   getSortedRowModel,
   flexRender,
 } from "@tanstack/react-table";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const FeaturedBlogs = () => {
   const [topBlogs, setTopBlogs] = useState([]);
   const [sorting, setSorting] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchTopBlogs = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
           "http://localhost:5000/featuredBlogPosts"
@@ -21,6 +25,8 @@ const FeaturedBlogs = () => {
         setTopBlogs(response.data);
       } catch (error) {
         console.error("Error fetching top blogs:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -73,9 +79,34 @@ const FeaturedBlogs = () => {
         </p>
       </div>
       <div className="mb-10">
-        {topBlogs && topBlogs.length ? (
+        {isLoading ? (
           <div className="overflow-x-auto w-[90%] rounded-xl mx-auto">
-            <table className="table-auto w-full border  border-gray-300">
+            <table className="table-auto w-full border border-gray-300">
+              <thead className="bg-gradient-to-r from-[#29dadd] to-[#787878]">
+                <tr>
+                  {columns.map((column, idx) => (
+                    <th key={idx} className="px-4 py-2">
+                      <Skeleton width={100} />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Array.from({ length: 10 }).map((rId) => (
+                  <tr key={rId} className="border-t">
+                    {columns.map((cId) => (
+                      <td key={cId} className="px-4 py-2">
+                        <Skeleton height={30} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : topBlogs && topBlogs.length ? (
+          <div className="overflow-x-auto w-[90%] rounded-xl mx-auto">
+            <table className="table-auto w-full border border-gray-300">
               <thead className="bg-gradient-to-r from-[#29dadd] to-[#787878]">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
@@ -101,7 +132,7 @@ const FeaturedBlogs = () => {
               </thead>
               <tbody>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className="border-t ">
+                  <tr key={row.id} className="border-t">
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-4 py-2 text-xs">
                         {flexRender(
