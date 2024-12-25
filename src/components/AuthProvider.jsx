@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
@@ -53,10 +54,24 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
   };
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if(currentUser?.email){
       setUser(currentUser);
-      setLoading(false);
-    });
+      const {data} = await axios.post(`http://localhost:5000/jwt`,{
+        email : currentUser?.email,
+      },
+      {withCredentials : true}
+    )
+    }else{
+      setUser(currentUser);
+      const {data} = await axios.get(`http://localhost:5000/logout`,
+      {withCredentials : true}
+    )
+
+    }
+    setLoading(false)
+    }
+  );
     return () => {
       unsubscribe();
     };

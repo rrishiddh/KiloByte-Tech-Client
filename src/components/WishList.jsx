@@ -1,8 +1,6 @@
-
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./AuthProvider";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const WishList = () => {
   const [myWishList, setMyWishList] = useState([]);
@@ -21,7 +19,10 @@ const WishList = () => {
   };
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/wishList?email=${user.email}`)
+      fetch(`http://localhost:5000/wishList?email=${user.email}`, {
+        method: "GET",
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => {
           setMyWishList(data);
@@ -54,23 +55,23 @@ const WishList = () => {
       <div className="text-center">
         <h1 className="my-6 text-2xl">Here Is Your WishList!</h1>
       </div>
-     { myWishList && myWishList?.length ? (<div className="overflow-x-auto w-[90%] mx-auto">
-        <table className="table table-xs table-pin-rows table-pin-cols">
-          <thead>
-            <tr>
-              <th></th>
-              <td>Blog Title</td>
-              <td>Category</td>
-              <td>Short Description</td>
-              <td>Long Description</td>
-              <td>Posting Date</td>
-              <td>Actions</td>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              myWishList.map((post, idx) => (
+      {myWishList && myWishList?.length ? (
+        <div className="overflow-x-auto w-[90%] mx-auto">
+          <table className="table table-xs table-pin-rows table-pin-cols">
+            <thead>
+              <tr>
+                <th></th>
+                <td>Blog Title</td>
+                <td>Category</td>
+                <td>Short Description</td>
+                <td>Long Description</td>
+                <td>Posting Date</td>
+                <td>Actions</td>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {myWishList.map((post, idx) => (
                 <tr key={idx}>
                   <th>{idx + 1}</th>
                   <td>{post.title}</td>
@@ -78,39 +79,41 @@ const WishList = () => {
                   <td>{post.shortDescription}</td>
                   <td>{post.longDescription}</td>
                   <td>{formatDate(post.postingDate)}</td>
-                  <td >  
-                    <div className="grid grid-cols-1 gap-2 my-auto">        
-                    <button
-                      className="btn btn-sm"
-                      onClick={() => handleDelete(post._id)}
-                    >
-                      <img
-                        src="https://img.icons8.com/?size=100&id=99940&format=png&color=000000"
-                        className="w-3 h-3 rounded-full"
-                      />
-                    </button>
-                    </div>       
+                  <td>
+                    <div className="grid grid-cols-1 gap-2 my-auto">
+                      <button
+                        className="btn btn-sm"
+                        onClick={() => handleDelete(post._id)}
+                      >
+                        <img
+                          src="https://img.icons8.com/?size=100&id=99940&format=png&color=000000"
+                          className="w-3 h-3 rounded-full"
+                        />
+                      </button>
+                    </div>
                   </td>
                 </tr>
-              ))
-            }
-          </tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <td>Blog Title</td>
-              <td>Category</td>
-              <td>Short Description</td>
-              <td>Long Description</td>
-              <td>Posting Date</td>
-              <td>Actions</td>
-              <th></th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>) : (<div className="text-center text-xl text-red-500 py-10">No Data Available, Add WishList First!</div>)
-     }
-      
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th></th>
+                <td>Blog Title</td>
+                <td>Category</td>
+                <td>Short Description</td>
+                <td>Long Description</td>
+                <td>Posting Date</td>
+                <td>Actions</td>
+                <th></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      ) : (
+        <div className="text-center text-xl text-red-500 py-10">
+          No Data Available, Add WishList First!
+        </div>
+      )}
     </div>
   );
 };
