@@ -67,12 +67,11 @@ const RecentBlogPost = () => {
             <p className="font-medium">Category : {blog.category}</p>
             <p className="text-sm">Description : {blog.shortDescription}</p>
             <div className="card-actions justify-end flex">
+            { user && user.email ? (<button onClick={() => handleAddToWishlist(blog)} className="btn btn-sm btn-primary">Add to Wishlist</button>): ( <button className="text-xs font-thin my-auto">Please Login To <br /> Add On Your WishList</button>)}   
             <Link to={`/allBlogPosts/${blog._id}`}>
                   <button className="btn btn-sm btn-primary">Explore Details</button>
             </Link>
-            <Link onClick={() => handleAddToWishlist(blog)}>
-                  <button className="btn btn-sm btn-primary">Add to Wishlist</button>
-            </Link>
+            
             </div>
           </div>
         </motion.div>)

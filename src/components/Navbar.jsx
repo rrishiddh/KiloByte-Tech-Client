@@ -10,7 +10,7 @@ const Navbar = () => {
     });
   };
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black ">
         <div className="navbar-start">
           <div className="dropdown">

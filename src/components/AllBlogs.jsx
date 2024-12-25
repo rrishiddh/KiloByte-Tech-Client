@@ -149,18 +149,20 @@ const AllBlogs = () => {
                     Description : {post.shortDescription}
                   </p>
 
-                  <div className="card-actions justify-end">
-                    <button
+                  <div className="card-actions justify-end">       
+                  { user && user.email ? (<button
                       className="btn btn-secondary"
                       onClick={() => handleAddToWishlist(post)}
                     >
                       Add to Wishlist
-                    </button>
+                    </button>): ( <button className="text-xs font-thin my-auto">Please Login To <br /> Add On Your WishList</button>)}     
+                 
                     <Link to={`/allBlogPosts/${post._id}`}>
                       <button className="btn btn-primary">
                         Explore Details
                       </button>
                     </Link>
+                    
                   </div>
                 </div>
               </div>

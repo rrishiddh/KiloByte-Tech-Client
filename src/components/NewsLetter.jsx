@@ -28,7 +28,7 @@ const NewsLetter = () => {
                     <input
                     required
                       type="email"
-                      placeholder="Your Email.."
+                      placeholder="Write Your Email Here..."
                       className="input input-bordered input-lg rounded-l-lg w-[40%]"
                     />                    
                     <button className="btn btn-lg bg-gradient-to-r from-pink-400 to-yellow-400  font-semibold rounded-r-lg">
