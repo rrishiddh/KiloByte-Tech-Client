@@ -91,7 +91,7 @@ const AllBlogs = () => {
           Checkout All Latest Posts!
         </h1>
 
-        <div className="flex justify-center mb-6">
+        <div className="flex max-sm:flex-col max-sm:w-[60%] max-sm:mx-auto justify-center mb-6">
           <input
             type="text"
             placeholder="Search by Title"
