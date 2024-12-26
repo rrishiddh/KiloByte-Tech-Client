@@ -89,7 +89,7 @@ const BlogDetails = () => {
               {user?.email === selectedPost.userEmail ? (
                 <p className="ml-20 text-xs text-red-500 italic">Cannot comment on your own blog</p>
               ) : user ? (
-                <div className="flex items-center gap-2">
+                <div className="flex max-sm:flex-col max-sm:w-[60%] max-sm:mx-auto  items-center gap-2">
                   <textarea
                     className="textarea textarea-info"
                     placeholder="Any thoughts..?"
