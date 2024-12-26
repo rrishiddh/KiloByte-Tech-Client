@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 const UpdateBlogPage = () => {
   const data = useLoaderData();
   const { id } = useParams();
   const selectedPost = data.find((post) => post._id === id);
+  const { user } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     title: selectedPost.title,
@@ -29,7 +31,7 @@ const UpdateBlogPage = () => {
       postingDate: currentDateTime,
     };
 
-    fetch(`http://localhost:5000/allBlog/${selectedPost._id}`, {
+    fetch(`https://assignment11-client-side.vercel.app/allBlog/${selectedPost._id}?email=${user.email}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addToBlog),

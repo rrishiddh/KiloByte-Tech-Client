@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/recentBlog"),
+        loader: () => fetch("https://assignment11-client-side.vercel.app/recentBlog"),
       },
       {
         path: "/addBlog",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/allBlogPosts/:id",
         element: <BlogDetails></BlogDetails>,
-        loader: () => fetch("http://localhost:5000/allBlogPosts"),
+        loader: () => fetch("https://assignment11-client-side.vercel.app/allBlogPosts"),
       },
       {
         path: "/updateBlog/:id",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             <UpdateBlogPage></UpdateBlogPage>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allBlogPosts"),
+        loader: () => fetch("https://assignment11-client-side.vercel.app/allBlogPosts"),
       },
       {
         path: "/featuredBlogs",
@@ -62,7 +62,6 @@ const router = createBrowserRouter([
             <WishList></WishList>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/wishList"),
       },
       {
         path: "auth",

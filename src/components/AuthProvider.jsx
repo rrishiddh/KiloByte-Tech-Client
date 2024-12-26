@@ -55,23 +55,24 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if(currentUser?.email){
       setUser(currentUser);
-      const {data} = await axios.post(`http://localhost:5000/jwt`,{
-        email : currentUser?.email,
-      },
-      {withCredentials : true}
-    )
-    }else{
-      setUser(currentUser);
-      const {data} = await axios.get(`http://localhost:5000/logout`,
-      {withCredentials : true}
-    )
-
-    }
-    setLoading(false)
-    }
-  );
+      if (currentUser?.email) {
+        try {
+          const { data } = await axios.post(`https://assignment11-client-side.vercel.app/jwt`, { email: currentUser?.email }, { withCredentials: true });
+        } catch (error) {
+          console.error("Error fetching JWT:", error);
+        }
+        
+      } else {
+        setUser(currentUser);
+        try {
+          await axios.get(`https://assignment11-client-side.vercel.app/logout`, { withCredentials: true });
+        } catch (error) {
+          console.error("Error during logout:", error);
+        }
+      }
+      setLoading(false);
+    });
     return () => {
       unsubscribe();
     };

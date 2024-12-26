@@ -1,8 +1,5 @@
-// import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -11,7 +8,6 @@ import img1 from '../assets/01.jpg'
 import img2 from '../assets/02.jpg'
 import img3 from '../assets/03.jpg'
 
-// import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slide from './Slide';
 

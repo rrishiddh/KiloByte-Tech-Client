@@ -23,7 +23,7 @@ const RecentBlogPost = () => {
           userName: user.displayName,
         };
       
-        await fetch("http://localhost:5000/wishList", {
+        await fetch("https://assignment11-client-side.vercel.app/wishList", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

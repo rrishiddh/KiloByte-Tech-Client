@@ -27,7 +27,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/comments?blogId=${id}`);
+        const response = await fetch(`https://assignment11-client-side.vercel.app/comments?blogId=${id}`);
         const data = await response.json();
         setComments(data);
       } catch (error) {
@@ -42,7 +42,7 @@ const BlogDetails = () => {
   const handlePostComment = async () => {
     if (!newComment.trim()) return;
     try {
-      const response = await fetch("http://localhost:5000/comments", {
+      const response = await fetch("https://assignment11-client-side.vercel.app/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

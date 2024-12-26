@@ -20,7 +20,7 @@ const FeaturedBlogs = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          "http://localhost:5000/featuredBlogPosts"
+          "https://assignment11-client-side.vercel.app/featuredBlogPosts"
         );
         setTopBlogs(response.data);
       } catch (error) {
@@ -85,17 +85,20 @@ const FeaturedBlogs = () => {
               <thead className="bg-gradient-to-r from-[#29dadd] to-[#787878]">
                 <tr>
                   {columns.map((column, idx) => (
-                    <th key={idx} className="px-4 py-2">
+                    <th key={`skeleton-header-${idx}`} className="px-4 py-2">
                       <Skeleton width={100} />
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {Array.from({ length: 10 }).map((rId) => (
-                  <tr key={rId} className="border-t">
-                    {columns.map((cId) => (
-                      <td key={cId} className="px-4 py-2">
+                {Array.from({ length: 10 }).map((_, rowIndex) => (
+                  <tr key={`skeleton-row-${rowIndex}`} className="border-t">
+                    {columns.map((_, colIndex) => (
+                      <td
+                        key={`skeleton-cell-${rowIndex}-${colIndex}`}
+                        className="px-4 py-2"
+                      >
                         <Skeleton height={30} />
                       </td>
                     ))}

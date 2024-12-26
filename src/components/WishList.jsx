@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const WishList = () => {
   const [myWishList, setMyWishList] = useState([]);
@@ -17,28 +18,26 @@ const WishList = () => {
       hour12: true,
     });
   };
+
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/wishList?email=${user.email}`, {
-        method: "GET",
-        credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setMyWishList(data);
-        })
-        .catch((error) => {
-          console.error("Error fetching wishlist:", error);
-        });
+      axios
+  .get(`https://assignment11-client-side.vercel.app/wishList?email=${user.email}`, {
+    withCredentials: true,
+  })
+  .then((response) => {
+    setMyWishList(response.data);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
     }
   }, [user]);
 
   const handleDelete = (id) => {
     if (id) {
-      fetch(`http://localhost:5000/wishList/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
+      axios
+        .delete(`https://assignment11-client-side.vercel.app/wishList/${id}`)
         .then(() => {
           Swal.fire({
             title: "Deleted!",
@@ -46,6 +45,9 @@ const WishList = () => {
             icon: "success",
           });
           setMyWishList(myWishList.filter((wishList) => wishList._id !== id));
+        })
+        .catch((error) => {
+          console.error("Error deleting wishlist item:", error.message);
         });
     }
   };

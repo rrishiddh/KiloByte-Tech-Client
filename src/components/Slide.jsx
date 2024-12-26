@@ -17,7 +17,7 @@ const Slide = ({ image, text }) => {
           <br />
 
           <Link
-            to="/addBlogs"
+            to="/allBlogs"
             className="w-full px-5 py-4 mt-4 text-sm font-medium text-gray-400 capitalize transition"
           >
             Don&apos;t miss out! Read all our blogs and get in touch with the industry&apos;s latest tech today!

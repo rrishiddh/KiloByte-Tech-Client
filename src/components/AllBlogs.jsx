@@ -18,7 +18,7 @@ const AllBlogs = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:5000/allBlogPost?searchText=${searchText}`
+          `https://assignment11-client-side.vercel.app/allBlogPost?searchText=${searchText}`
         );
         const data = await response.json();
         setAllBlogPost(data);
@@ -55,7 +55,7 @@ const AllBlogs = () => {
       userName: user.displayName,
     };
 
-    await fetch("http://localhost:5000/wishList", {
+    await fetch("https://assignment11-client-side.vercel.app/wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,8 +107,8 @@ const AllBlogs = () => {
             <option value="All">Filter by Category:</option>
             {allBlogPost.length > 0 &&
               [...new Set(allBlogPost.map((post) => post.category))].map(
-                (category, idx) => (
-                  <option key={idx} value={category}>
+                (category) => (
+                  <option key={category} value={category}>
                     {category}
                   </option>
                 )
@@ -118,7 +118,7 @@ const AllBlogs = () => {
 
         <div className="grid grid-cols-1 gap-6 min-h-screen">
           {isLoading ? (
-            Array.from({ length: 3 }).map((idx) => (
+            Array.from({ length: 3 }).map((_,idx) => (
               <div key={idx} className="card w-[70%] mx-auto shadow-xl p-2">
                 <div className="grid md:grid-cols-2 gap-4">
                   <Skeleton height={150} width={"100%"} />
@@ -130,9 +130,9 @@ const AllBlogs = () => {
               </div>
             ))
           ) : filterBlogs.length > 0 ? (
-            filterBlogs.map((post, idx) => (
+            filterBlogs.map((post) => (
               <div
-                key={idx}
+                key={post._id}
                 className="card w-[70%] mx-auto bg-base-100 shadow-xl p-2 grid-cols-1 grid md:grid-cols-2"
               >
                 <figure className="object-contain mx-auto">
@@ -148,21 +148,24 @@ const AllBlogs = () => {
                   <p className="font-medium">
                     Description : {post.shortDescription}
                   </p>
-
-                  <div className="card-actions justify-end">       
-                  { user && user.email ? (<button
-                      className="btn btn-secondary"
-                      onClick={() => handleAddToWishlist(post)}
-                    >
-                      Add to Wishlist
-                    </button>): ( <button className="text-xs font-thin my-auto">Please Login To <br /> Add On Your WishList</button>)}     
-                 
+                  <div className="card-actions justify-end">
+                    {user && user.email ? (
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handleAddToWishlist(post)}
+                      >
+                        Add to Wishlist
+                      </button>
+                    ) : (
+                      <button className="text-xs font-thin my-auto">
+                        Please Login To <br /> Add On Your WishList
+                      </button>
+                    )}
                     <Link to={`/allBlogPosts/${post._id}`}>
                       <button className="btn btn-primary">
                         Explore Details
                       </button>
                     </Link>
-                    
                   </div>
                 </div>
               </div>
