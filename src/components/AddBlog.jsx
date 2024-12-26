@@ -29,7 +29,7 @@ const AddBlog = () => {
       userName: user.displayName,
     };
 
-    fetch("https://assignment11-client-side.vercel.app/allBlog", {
+    fetch(`https://assignment11-client-side.vercel.app/allBlog?email=${user.email}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addToBlog),
