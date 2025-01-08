@@ -33,8 +33,65 @@
 - React-Tabs: React-Tabs is a simple and accessible React component for creating tabbed interfaces. It provides a straightforward API for managing tab selection and content visibility.
 - Swiper: Swiper is a free and open-source JavaScript library for creating touch-enabled sliders and carousels. It is highly customizable and supports various features like autoplay, loop, and lazy loading.
 
+
+### Dependencies:
+- @tanstack/react-table: ^8.20.6
+- axios: ^1.7.9
+- firebase: ^11.1.0
+- framer-motion: ^11.15.0
+- localforage: ^1.10.0
+- match-sorter: ^8.0.0
+- motion: ^11.15.0
+- react: ^18.3.1
+- react-dom: ^18.3.1
+- react-loading-skeleton: ^3.5.0
+- react-photo-view: ^1.2.6
+- react-router-dom: ^7.1.0
+- react-tabs: ^6.1.0
+- react-toastify: ^11.0.2
+- sort-by: ^1.2.0
+- sweetalert2: ^11.15.3
+- swiper: ^11.1.15
+
+### How to run on local machine?
+1. Open your terminal or command prompt.
+
+2. Use the git clone command followed by the repository URL:-  git clone 'repository-url'
+
+- Replace 'repository-url' with the actual URL of the Git repository you want to clone.
+
+3. To run the project: Navigate to the project directory:- cd 'directory-name' 
+
+4. Run 'npm install' to install project dependencies.
+
+5. Environment setup:Create a '.env.local' file and put your firebase environment variable there. Save the following variable:
+- VITE_apiKey='YOUR_FIREBASE_API_KEY'
+- VITE_authDomain='YOUR_FIREBASE_AUTH_DOMAIN'
+- VITE_projectId='YOUR_FIREBASE_PROJECT_ID'
+- VITE_storageBucket='YOUR_FIREBASE_STORAGE_BUCKET'
+- VITE_messagingSenderId='YOUR_FIREBASE_MESSAGING_SENDER_ID'
+- VITE_appId='YOUR_FIREBASE_APP_ID'
+
+6. Run 'npm run dev' to run the project locally.
+
+
 ##  Live Link: 
 ### Surge : [KiloByte Tech](https://kilobyte-tech-rrishiddh.surge.sh/)
+
+### 
+##  GitHub Repo Link: 
+###  Server Side : [https://github.com/rrishiddh/KiloByte-Tech-Server](https://github.com/rrishiddh/KiloByte-Tech-Server)
+
+##  Site Preview: 
+ <div align="center">
+  <img width="100%" src="./src/assets/ss01.png"  />
+  <br>
+  <img width="100%" src="./src/assets/ss02.png"  />
+  <br>
+  <img width="100%" src="./src/assets/ss03.png"  />
+  <br>
+  <img width="100%" src="./src/assets/ss04.png"  />
+</div>
 
 ### 
 
