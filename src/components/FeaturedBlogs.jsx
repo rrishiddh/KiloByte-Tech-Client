@@ -20,7 +20,7 @@ const FeaturedBlogs = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          "https://assignment11-client-side.vercel.app/featuredBlogPosts"
+          "https://kilo-byte-tech-server.vercel.app/featuredBlogPosts"
         );
         setTopBlogs(response.data);
       } catch (error) {
@@ -71,9 +71,9 @@ const FeaturedBlogs = () => {
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen my-10">
       <div className="text-center">
-        <h1 className="my-6 text-2xl">Find Out Top 10 Posts!</h1>
+        <h1 className="text-2xl max-md:text-xl  font-bold mb-4">Find Out Top 10 Posts!</h1>
         <p className="italic text-sm font-thin mb-4">
           Column of the table is sortable by clicking on the column header
         </p>

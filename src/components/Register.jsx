@@ -1,17 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import register from "./../assets/register.gif";
 
 const Register = () => {
-  const { setUser, createNewUser, updateUserProfile, signInWithGoogle,logOut } =
+  const { setUser, createNewUser, updateUserProfile, signInWithGoogle } =
     useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
-
-  const handleLogOut = () => {
-    logOut()
-  };
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -35,10 +32,9 @@ const Register = () => {
           .then(() => {
             Swal.fire({
               title: "Successfully Register!",
-              text: `Dear ${user.displayName}, Please Login Now!`,
-              icon: "success"
+              text: `Welcome ${user.displayName}!`,
+              icon: "success",
             });
-            handleLogOut();
             navigate("/");
           })
           .catch((err) => {
@@ -58,10 +54,9 @@ const Register = () => {
         setUser(user);
         Swal.fire({
           title: "Successfully Register!",
-          text: `Dear ${user.displayName}, Please Login Now!`,
-          icon: "success"
+          text: `Welcome ${user.displayName}!`,
+          icon: "success",
         });
-        handleLogOut();
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
@@ -76,101 +71,101 @@ const Register = () => {
     }
     if (!/[A-Z]/.test(password)) {
       return "Password must include at least 1 uppercase letter.";
-    }    
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      return "Password must include at least 1 special character.";
     }
-    if (!/[0-9]/.test(password)) {
-      return "Password must include at least 1 numeric character.";
+    if (!/[a-z]/.test(password)) {
+      return "Password must include at least 1 lowercase letter.";
     }
     return null;
   };
 
   return (
     <div>
-      <div className="min-h-screen  justify-center items-center">
-      <h2 className="text-2xl font-semibold pt-2 text-center mb-6 ">
-            Register Your Account
-          </h2>
-          <div className="flex justify-center items-center">
-          <div className="card bg-base-200 border-2 md:w-full max-w-lg shrink-0 px-10 py-6">          
-          <form onSubmit={handelSubmit} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                name="name"
-                type="text"
-                placeholder="name"
-                className="input input-bordered"
-                required
-              />
-            </div>
+      <div className=" justify-center bg-white items-center py-10">
+        <h2 className="text-2xl font-semibold pt-2 text-center mb-6 ">
+          Register Your Account
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
+          <img src={register} className="w-[70%] mx-auto my-auto"></img>
 
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
-            </div>
+          <div className="card card-compact bg-slate-100 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6">
+            <form onSubmit={handelSubmit} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
 
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo</span>
-              </label>
-              <input
-                name="photo"
-                type="text"
-                placeholder="photo-URL"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                name="password"     
-                type="password"          
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />                         
-                          
-            </div>
-            {error.password && (
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  name="photo"
+                  type="text"
+                  placeholder="photo-URL"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              {error.password && (
                 <label className="label text-sm text-red-600">
                   {error.password}
                 </label>
               )}
-            {error.register && (
-              <label className="label text-sm text-red-600">
-                {error.register}
-              </label>
-            )}
-            <div className="form-control mt-6">
-              <button className="btn btn-accent">Register</button>
-            </div>
-          </form>
-          <div className="divider">OR</div>
-          <button onClick={handelGoogleSignIn} className="btn btn-primary my-4">
-            Register With Google
-          </button>
-          <p className="text-center font-semibold">
-            Already have account?{" "}
-            <Link to="/auth/login" className="text-blue-500 underline">
-              Login
-            </Link>
-          </p>
-        </div>
+              {error.register && (
+                <label className="label text-sm text-red-600">
+                  {error.register}
+                </label>
+              )}
+              <div className="form-control mt-6">
+                <button className="btn max-sm:btn-sm btn-ghost bg-gradient-to-r from-[#29dadd] to-[#787878a9]">
+                  Register
+                </button>
+              </div>
+            </form>
+            <div className="divider">OR</div>
+            <button onClick={handelGoogleSignIn} className="btn w-[95%] mx-auto max-sm:btn-sm bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600  my-4">
+              Register With Google
+            </button>
+            <p className="text-center text-sm font-semibold max-sm:text-sm">
+              Already have account?{" "}
+              <Link to="/auth/login" className="text-blue-500 underline">
+                Login
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

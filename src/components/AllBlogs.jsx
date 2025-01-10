@@ -18,7 +18,7 @@ const AllBlogs = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://assignment11-client-side.vercel.app/allBlogPost?searchText=${searchText}`
+          `https://kilo-byte-tech-server.vercel.app/allBlogPost?searchText=${searchText}`
         );
         const data = await response.json();
         setAllBlogPost(data);
@@ -55,7 +55,7 @@ const AllBlogs = () => {
       userName: user.displayName,
     };
 
-    await fetch("https://assignment11-client-side.vercel.app/wishList", {
+    await fetch("https://kilo-byte-tech-server.vercel.app/wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,9 +85,9 @@ const AllBlogs = () => {
   };
 
   return (
-    <div>
-      <div className="my-10 min-h-screen">
-        <h1 className="text-center text-2xl font-bold my-6">
+    <div className="my-10 min-h-screen ">
+      <div className="w-[90%] mx-auto" >
+        <h1 className="text-center text-2xl max-md:text-xl  font-bold my-6">
           Checkout All Latest Posts!
         </h1>
 
@@ -116,11 +116,11 @@ const AllBlogs = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 min-h-screen">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 max-sm:grid-cols-1 gap-4 min-h-screen  max-sm:w-[90%]  mx-auto">
           {isLoading ? (
             Array.from({ length: 3 }).map((_,idx) => (
-              <div key={idx} className="card w-[70%] mx-auto shadow-xl p-2">
-                <div className="grid md:grid-cols-2 gap-4">
+              <div key={idx} className="card w-[90%] mx-auto shadow-xl p-2">
+                <div className="grid md:grid-cols-3 gap-4">
                   <Skeleton height={150} width={"100%"} />
                   <div>
                     <Skeleton count={3} />
@@ -133,25 +133,25 @@ const AllBlogs = () => {
             filterBlogs.map((post) => (
               <div
                 key={post._id}
-                className="card w-[70%] mx-auto bg-base-100 shadow-xl p-2 grid-cols-1 grid md:grid-cols-2"
+                className="card  mx-auto bg-base-100 shadow-xl p-2 grid-cols-1 grid  gap-1"
               >
-                <figure className="object-contain mx-auto">
+                <figure className="h-[200px] w-[100%] mx-auto object-cover">
                   <img
                     src={post.imageUrl}
                     alt={post.title}
-                    className="max-sm:mt-4 rounded-lg object-cover"
-                  />
+                    className="object-fit max-sm:mt-4 rounded-lg mx-auto my-auto "
+                    />
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title text-2xl">{post.title}</h2>
-                  <h2 className="font-light text-xl">{post.category}</h2>
-                  <p className="font-medium">
+                  <p className="absolute top-0 right-0 border text-xs bg-base-200  btn btn-xs ">{post.category}</p>
+                  <h2 className="card-title text-base">{post.title}</h2>
+                  <p className="text-sm font-light">
                     Description : {post.shortDescription}
                   </p>
                   <div className="card-actions justify-end">
                     {user && user.email ? (
                       <button
-                        className="btn btn-secondary"
+                        className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600"
                         onClick={() => handleAddToWishlist(post)}
                       >
                         Add to Wishlist
@@ -162,7 +162,7 @@ const AllBlogs = () => {
                       </button>
                     )}
                     <Link to={`/allBlogPosts/${post._id}`}>
-                      <button className="btn btn-primary">
+                      <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">
                         Explore Details
                       </button>
                     </Link>

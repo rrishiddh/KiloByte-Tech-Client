@@ -29,7 +29,7 @@ const AddBlog = () => {
       userName: user.displayName,
     };
 
-    fetch(`https://assignment11-client-side.vercel.app/allBlog?email=${user.email}`, {
+    fetch(`https://kilo-byte-tech-server.vercel.app/allBlog?email=${user.email}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addToBlog),
@@ -54,7 +54,7 @@ const AddBlog = () => {
 
   return (
     <>
-      <div className="min-h-screen justify-center items-center">
+      <div className="min-h-screen justify-center items-center my-10">
         <h2 className="text-2xl font-semibold pt-2 text-center">
           {" "}
           Add New Blog Post!
@@ -153,7 +153,7 @@ const AddBlog = () => {
                 </div>
               </div>
               <div className="form-control w-[50%] mx-auto mt-6">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">
                   Submit
                 </button>
               </div>

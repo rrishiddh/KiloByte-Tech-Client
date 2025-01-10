@@ -31,7 +31,7 @@ const UpdateBlogPage = () => {
       postingDate: currentDateTime,
     };
 
-    fetch(`https://assignment11-client-side.vercel.app/allBlog/${selectedPost._id}?email=${user.email}`, {
+    fetch(`https://kilo-byte-tech-server.vercel.app/allBlog/${selectedPost._id}?email=${user.email}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addToBlog),

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://assignment11-client-side.vercel.app/recentBlog"),
+        loader: () => fetch("https://kilo-byte-tech-server.vercel.app/recentBlog"),
       },
       {
         path: "/addBlog",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/allBlogPosts/:id",
         element: <BlogDetails></BlogDetails>,
-        loader: () => fetch("https://assignment11-client-side.vercel.app/allBlogPosts"),
+        loader: () => fetch("https://kilo-byte-tech-server.vercel.app/allBlogPosts"),
       },
       {
         path: "/updateBlog/:id",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             <UpdateBlogPage></UpdateBlogPage>
           </PrivateRoute>
         ),
-        loader: () => fetch("https://assignment11-client-side.vercel.app/allBlogPosts"),
+        loader: () => fetch("https://kilo-byte-tech-server.vercel.app/allBlogPosts"),
       },
       {
         path: "/featuredBlogs",

@@ -22,7 +22,7 @@ const WishList = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-  .get(`https://assignment11-client-side.vercel.app/wishList?email=${user.email}`, {
+  .get(`https://kilo-byte-tech-server.vercel.app/wishList?email=${user.email}`, {
     withCredentials: true,
   })
   .then((response) => {
@@ -37,7 +37,7 @@ const WishList = () => {
   const handleDelete = (id) => {
     if (id) {
       axios
-        .delete(`https://assignment11-client-side.vercel.app/wishList/${id}`)
+        .delete(`https://kilo-byte-tech-server.vercel.app/wishList/${id}`)
         .then(() => {
           Swal.fire({
             title: "Deleted!",
@@ -53,7 +53,8 @@ const WishList = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen my-10 ">
+      <div className="w-[90%] mx-auto ">
       <div className="text-center">
         <h1 className="my-6 text-2xl">Here Is Your WishList!</h1>
       </div>
@@ -116,6 +117,7 @@ const WishList = () => {
           No Data Available, Add WishList First!
         </div>
       )}
+    </div>
     </div>
   );
 };

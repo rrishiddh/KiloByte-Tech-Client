@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser?.email) {
         try {
-          const { data } = await axios.post(`https://assignment11-client-side.vercel.app/jwt`, { email: currentUser?.email }, { withCredentials: true });
+          const { data } = await axios.post(`https://kilo-byte-tech-server.vercel.app/jwt`, { email: currentUser?.email }, { withCredentials: true });
         } catch (error) {
           console.error("Error fetching JWT:", error);
         }
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
       } else {
         setUser(currentUser);
         try {
-          await axios.get(`https://assignment11-client-side.vercel.app/logout`, { withCredentials: true });
+          await axios.get(`https://kilo-byte-tech-server.vercel.app/logout`, { withCredentials: true });
         } catch (error) {
           console.error("Error during logout:", error);
         }
