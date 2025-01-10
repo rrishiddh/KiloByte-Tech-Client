@@ -48,7 +48,7 @@ const UpdateBlogPage = () => {
 
   return (
     <div>
-      <div className="w-[80%] mx-auto my-10">
+      <div className="w-[80%] mx-auto my-10 min-h-screen">
         <h3 className="font-bold text-center mb-6 text-2xl my-6">
           Update Your Post
         </h3>

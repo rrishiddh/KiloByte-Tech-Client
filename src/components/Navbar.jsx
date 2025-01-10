@@ -9,9 +9,66 @@ const Navbar = () => {
       window.location.href = "/";
     });
   };
+  const navOption = (
+    <>
+      <li>
+        <NavLink to="/">
+          <img
+            src="https://img.icons8.com/?size=100&id=41651&format=png&color=000000"
+            className="w-5 h-5"
+          />
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/allBlogs">
+          <img
+            src="https://img.icons8.com/?size=100&id=41823&format=png&color=000000"
+            className="w-5 h-5"
+          />
+          All Blogs
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/featuredBlogs">
+          <img
+            src="https://img.icons8.com/?size=100&id=EOGZg7b548R6&format=png&color=000000"
+            className="w-5 h-5"
+          />
+          Featured Blogs
+        </NavLink>
+      </li>
+
+      {user && user?.email ? (
+        <>
+          <li>
+            <NavLink to="/addBlog">
+              <img
+                src="https://img.icons8.com/?size=100&id=55004&format=png&color=000000"
+                className="w-5 h-5"
+              />
+              Add Blog{" "}
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/wishList">
+              <img
+                src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000"
+                className="w-5 h-5"
+              />
+              WishList
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
+    </>
+  );
   return (
     <div className="sticky top-0 z-50">
-      <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black ">
+      <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black  px-5  max-sm:pb-3">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -32,59 +89,16 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2  shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2  shadow text-xs"
             >
-              <>
-                <li>
-                  <NavLink to="/">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=41651&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/addBlog">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=55004&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Add Blog{" "}
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/allBlogs">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=41823&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    All Blogs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/featuredBlogs">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=EOGZg7b548R6&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Featured Blogs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/wishList">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    WishList
-                  </NavLink>
-                </li>                
-              </>
+              {navOption}
             </ul>
           </div>
 
-          <Link to={"/"} className="btn btn-ghost text-xl max-sm:text-base">
+          <Link
+            to={"/"}
+            className="btn btn-ghost max-sm:btn-sm text-lg max-sm:text-base "
+          >
             <img
               className="w-8 h-8 max-sm:hidden"
               src="https://img.icons8.com/?size=100&id=n16PSBiTkMuV&format=png&color=000000"
@@ -94,80 +108,77 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-2 px-1">
-          <>
-                <li>
-                  <NavLink to="/">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=41651&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/addBlog">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=55004&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Add Blog{" "}
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/allBlogs">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=41823&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    All Blogs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/featuredBlogs">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=EOGZg7b548R6&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    Featured Blogs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/wishList">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=uInPGSbVMJz8&format=png&color=000000"
-                      className="w-5 h-5"
-                    />
-                    WishList
-                  </NavLink>
-                </li>                
-              </>
+          <ul className="menu menu-horizontal space-x-2 px-1 text-xs">
+            {navOption}
           </ul>
         </div>
-        <div className="navbar-end space-x-2">
-        
+        <div className="navbar-end space-x-2">      
           {user && user?.email ? (
-          <div className="flex items-center space-x-4">
-            <div className="avatar">
-  <div className="ring-primary ring-offset-base-100 w-12 rounded-full ring ring-offset-2">
-  <img src={user?.photoURL} referrerPolicy="no-referrer" className="w-12 rounded-full cursor-pointer" />
-  </div>
-</div>
-                            
-
-            <button onClick={handleLogOut}  className="btn bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
-              Logout
-            </button>
+            <div className="dropdown dropdown-hover dropdown-left ">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost  btn-circle avatar "
+            >
+              <div className=" cursor-pointer avatar ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2" >
+                  <img
+                    src={user?.photoURL}
+                    referrerPolicy="no-referrer"
+                  />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
+            >
+              <li>
+              <button
+                onClick={handleLogOut}
+                className="btn btn-sm text-xs mx-auto w-full"
+              >
+                Logout
+              </button>
+              </li>
+            
+            </ul>
           </div>
-           ) : ( 
-          <>
-            <Link to="/auth/login"  className="btn max-sm:btn-sm bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4] ">
-              Login
-            </Link>
-            <Link  to="/auth/register" className="btn max-sm:btn-sm bg-gradient-to-r from-teal-200 to-blue-300 hover:from-pink-300 hover:to-[#d46b6bd4]">
-              Registration
-            </Link>
-          </>
+          </div>
+          ) : (
+            <>
+              <div className="dropdown dropdown-hover dropdown-left ">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 "
+            >
+              <div >
+                <button className="text-xs">Join Now</button>
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+            >
+              <li>
+              <Link
+                to="/auth/login"
+                className=" w-full justify-center "
+              >
+                Login
+              </Link>
+              </li>
+              
+              
+              <li>
+              <Link
+                to="/auth/register"
+                className=" w-full justify-center"
+              >
+                Registration
+              </Link>
+              </li>
+            </ul>
+          </div>
+            </>
           )}
         </div>
       </div>

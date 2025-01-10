@@ -3,6 +3,8 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 import { motion } from "motion/react"
+import { Typewriter } from 'react-simple-typewriter'
+
 
 
 const RecentBlogPost = () => {
@@ -54,22 +56,32 @@ const RecentBlogPost = () => {
 
     return (
         <div className="my-10 w-[90%] mx-auto">
-        <h1 className="text-center text-2xl font-bold my-6"> Checkout Some <br className="md:hidden" /> Recent Blog Post :</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <h1 className="text-center text-2xl max-md:text-xl font-bold my-6 mx-auto w-[80%]"> Checkout Some <br className="md:hidden" /> {" "}
+        <Typewriter
+            words={['Recent Blog Post!', 'Thoughts Shared With Us!', 'New Tech Recent Released!']}
+            loop={0}
+            cursor
+            cursorBlinking
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            
+          /></h1>
+        <div className="grid max-sm:grid-cols-1 grid-cols-3 lg:grid-cols-4 gap-4">
         {
          recentBlog.map((blog,idx) => <motion.div
-         whileHover={{ scale: 1.1 }}
-         whileTap={{ scale: 0.9 }} key={idx} className="card card-compact bg-base-100 shadow-xl p-2">
+         whileHover={{ scale: 1.03 }}
+         whileTap={{ scale: 0.99 }} key={idx} className="card card-compact bg-base-100 shadow-xl p-2">
           
           <div
             className="card-body">
-            <h2 className="card-title">{blog.title}</h2>
-            <p className="font-medium">Category : {blog.category}</p>
-            <p className="text-sm">Description : {blog.shortDescription}</p>
+            <p className="font-thin absolute top-0 right-0 border text-xs bg-base-200  btn btn-xs">{blog.category}</p>
+            <h2 className="card-title text-base">{blog.title}</h2>
+            <p className="text-sm font-light"> {blog.shortDescription.substring(0, 30) + "..."}</p>
             <div className="card-actions justify-end flex">
-            { user && user.email ? (<button onClick={() => handleAddToWishlist(blog)} className="btn btn-sm btn-primary">Add to Wishlist</button>): ( <button className="text-xs font-thin my-auto">Please Login To <br /> Add On Your WishList</button>)}   
+            { user && user.email ? (<button onClick={() => handleAddToWishlist(blog)} className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">Add to Wishlist</button>): ( <button className="text-xs font-thin my-auto">Please Login To <br /> Add On Your WishList</button>)}   
             <Link to={`/allBlogPosts/${blog._id}`}>
-                  <button className="btn btn-sm btn-primary">Explore Details</button>
+                  <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">Explore Details</button>
             </Link>
             
             </div>

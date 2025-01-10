@@ -86,7 +86,7 @@ const AllBlogs = () => {
 
   return (
     <div>
-      <div className="my-10">
+      <div className="my-10 min-h-screen">
         <h1 className="text-center text-2xl font-bold my-6">
           Checkout All Latest Posts!
         </h1>

@@ -17,7 +17,7 @@ const NewsLetter = () => {
   return (
     <div>    
       <form onSubmit={handleSubscribe}>      
-        <div className=" my-20 w-[80%] mx-auto bg-gradient-to-r from-blue-100 to-orange-100 py-16 rounded-lg text-center text-black outline  outline-offset-8 outline-white">
+        <div className=" my-20 w-[80%] mx-auto bg-gradient-to-r from-[#29daddc0] to-[#78787882] py-16 rounded-lg text-center text-black outline  outline-offset-8 outline-white">
                   <h2 className="text-3xl font-bold my-4">
                     Subscribe to Our Newsletter
                   </h2>
@@ -31,7 +31,7 @@ const NewsLetter = () => {
                       placeholder="Write Your Email Here..."
                       className="input input-bordered input-lg rounded-l-lg w-[40%]"
                     />                    
-                    <button className="btn btn-lg bg-gradient-to-r from-pink-400 to-yellow-400  font-semibold rounded-r-lg">
+                    <button className="btn btn-lg bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600  font-semibold rounded-r-lg">
                       Subscribe
                     </button>
                   </div>
