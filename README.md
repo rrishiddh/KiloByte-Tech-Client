@@ -12,7 +12,14 @@
 
 - The purpose of KiloByte Tech is to deliver an engaging, insightful, and visually captivating platform for technology enthusiasts to explore the latest innovations, trends, and reviews in the tech world. It is built using modern web technologies, ensuring seamless navigation, fast performance, and an interactive user experience.
   
-
+### Main Technology used in this project:
+- React.js
+- Tanstack-React-Query
+- React-router
+- MongoDB
+- Node.js
+- Express.js
+- Tailwind-CSS
 
 
 ### Main Key Features:
