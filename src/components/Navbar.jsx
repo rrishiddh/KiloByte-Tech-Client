@@ -68,7 +68,7 @@ const Navbar = () => {
   );
   return (
     <div className="sticky top-0 z-50">
-      <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black  px-5  max-sm:pb-3">
+      <div className="navbar bg-gradient-to-r from-[#29dadd] to-[#787878] text-black  px-10  max-sm:pb-3">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,7 +89,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2  shadow text-xs"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2  shadow space-y-1 text-xs"
             >
               {navOption}
             </ul>
@@ -108,7 +108,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-2 px-1 text-xs">
+          <ul className="menu menu-horizontal space-x-1 px-1 text-xs">
             {navOption}
           </ul>
         </div>
@@ -156,8 +156,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
-            >
+              className="menu menu-sm dropdown-content space-y-1 bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
               <Link
                 to="/auth/login"
