@@ -19,10 +19,11 @@
 - MongoDB
 - Node.js
 - Express.js
+- Axios
 - Tailwind-CSS
 
 
-### Main Key Features:
+### Key Features:
 
 - Backend Database Handling: Implement robust CRUD operations on the backend database to manage user data, reviews, and other relevant information. Integrate these operations seamlessly into the frontend to ensure data persistence and synchronization. 
 - User Authentication: Secure user registration and login using Firebase Authentication, with options for email/password and Google sign-in
@@ -83,8 +84,9 @@
 
 
 ##  Live Link: 
-### Surge : [KiloByte Tech](https://kilobyte-tech-rrishiddh.surge.sh/)
 ### Netlify : [KiloByte Tech](https://kilobyte-tech-rrishiddh.netlify.app/)
+### Surge : [KiloByte Tech](https://kilobyte-tech-rrishiddh.surge.sh/)
+
 
 ### 
 ##  GitHub Repo Link: 
