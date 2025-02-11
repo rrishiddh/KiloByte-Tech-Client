@@ -52,11 +52,11 @@ const Login = () => {
   
   return (
     <div className="min-h-screen w-[90%] mx-auto">
-      <div className=" justify-center bg-white items-center my-10">
+      <div className=" justify-center  items-center my-10">
 <h2 className="text-2xl font-semibold  text-center mb-6 ">Login To Your Account</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
       <img src={login} className="w-[70%] mx-auto my-auto" ></img>
-      <div className="card card-compact bg-slate-100 border-2 w-[70%] max-sm:mx-auto shrink-0 p-6">
+      <div className="card card-compact  border-2 w-[70%] max-sm:mx-auto shrink-0 p-6">
         <form onSubmit={handelSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
@@ -91,11 +91,11 @@ const Login = () => {
               )
             }
           <div className="form-control mt-6">
-            <button className="btn max-sm:btn-sm btn-ghost bg-gradient-to-r from-[#29dadd] to-[#787878a9]">Login</button>
+            <button className="btn max-sm:btn-sm btn-ghost  dark:text-black bg-gradient-to-r from-[#29dadd] to-[#787878a9]">Login</button>
           </div>
         </form>
         <div className="divider">OR</div>
-        <button onClick={handelGoogleSignIn} className="btn max-sm:btn-sm bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600  w-[95%] mx-auto my-4">Sign In With Google</button>
+        <button onClick={handelGoogleSignIn} className="btn max-sm:btn-sm bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black w-[95%] mx-auto my-4">Sign In With Google</button>
         <p className="text-center text-sm font-semibold">Don&apos;t have account? <Link to='/auth/register' className="text-blue-500 underline">Register</Link></p>
       </div>
       </div>

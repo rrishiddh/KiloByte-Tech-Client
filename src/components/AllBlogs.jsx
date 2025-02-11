@@ -133,7 +133,7 @@ const AllBlogs = () => {
             filterBlogs.map((post) => (
               <div
                 key={post._id}
-                className="card  mx-auto bg-base-100 shadow-xl p-2 grid-cols-1 grid  gap-1"
+                className="card  mx-auto  dark:border bg-base-100 shadow-xl p-2 grid-cols-1 grid  gap-1"
               >
                 <figure className="h-[200px] w-[100%] mx-auto object-cover">
                   <img

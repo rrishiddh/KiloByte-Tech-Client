@@ -110,7 +110,7 @@ const FeaturedBlogs = () => {
         ) : topBlogs && topBlogs.length ? (
           <div className="overflow-x-auto w-[90%] rounded-xl mx-auto">
             <table className="table-auto w-full border border-gray-300">
-              <thead className="bg-gradient-to-r from-[#29dadd] to-[#787878]">
+              <thead className="bg-gradient-to-r  dark:text-black from-[#29dadd] to-[#787878]">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (
