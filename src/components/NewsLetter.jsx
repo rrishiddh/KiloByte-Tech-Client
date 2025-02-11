@@ -31,7 +31,7 @@ const NewsLetter = () => {
                       placeholder="Write Your Email Here..."
                       className="input input-bordered input-lg rounded-l-lg w-[40%]"
                     />                    
-                    <button className="btn btn-lg bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600  font-semibold rounded-r-lg">
+                    <button className="btn btn-lg dark:text-black bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600  font-semibold rounded-r-lg">
                       Subscribe
                     </button>
                   </div>

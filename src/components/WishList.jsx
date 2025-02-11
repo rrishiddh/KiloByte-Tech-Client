@@ -85,7 +85,7 @@ const WishList = () => {
                   <td>
                     <div className="grid grid-cols-1 gap-2 my-auto">
                       <button
-                        className="btn btn-sm"
+                        className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black"
                         onClick={() => handleDelete(post._id)}
                       >
                         <img

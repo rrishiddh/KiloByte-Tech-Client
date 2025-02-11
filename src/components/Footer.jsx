@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-r from-[#29dadd] to-[#787878] px-10">
+    <div className="bg-gradient-to-r from-[#29dadd] to-[#787878] px-10 dark:text-black">
       <footer className="footer items-center p-4">
         <aside className="grid-flow-col max-md:mx-auto items-center">
           <img

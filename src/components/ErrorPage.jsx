@@ -11,7 +11,7 @@ const ErrorPage = () => {
         <div className="my-auto">
           <h2 className="font-bold text-3xl pt-3">Page Not Found!</h2>
           <Link to="/">
-            <button className="btn mt-10  bg-gradient-to-r from-[#8ed79f] to-[#71b280]">
+            <button className="btn mt-10 text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black">
               Go To Home Page
             </button>
           </Link>

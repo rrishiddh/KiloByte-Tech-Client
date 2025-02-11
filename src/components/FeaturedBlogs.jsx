@@ -55,7 +55,7 @@ const FeaturedBlogs = () => {
       header: "View Post",
       cell: ({ row }) => (
         <Link to={`/allBlogPosts/${row.original._id}`}>
-          <button className="btn btn-active btn-ghost btn-xs">Click..</button>
+          <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black">Click..</button>
         </Link>
       ),
     },

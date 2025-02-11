@@ -153,7 +153,7 @@ const AddBlog = () => {
                 </div>
               </div>
               <div className="form-control w-[50%] mx-auto mt-6">
-                <button type="submit" className="btn text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">
+                <button type="submit" className="btn text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black">
                   Submit
                 </button>
               </div>

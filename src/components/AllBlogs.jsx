@@ -151,7 +151,7 @@ const AllBlogs = () => {
                   <div className="card-actions justify-end">
                     {user && user.email ? (
                       <button
-                        className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600"
+                        className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black"
                         onClick={() => handleAddToWishlist(post)}
                       >
                         Add to Wishlist
@@ -162,7 +162,7 @@ const AllBlogs = () => {
                       </button>
                     )}
                     <Link to={`/allBlogPosts/${post._id}`}>
-                      <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">
+                      <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black">
                         Explore Details
                       </button>
                     </Link>

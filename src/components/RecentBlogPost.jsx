@@ -76,7 +76,7 @@ const RecentBlogPost = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.99 }}
             key={idx}
-            className="card card-compact bg-base-100 shadow-xl p-2"
+            className="card card-compact bg-base-100 shadow-xl p-2  dark:border"
           >
             <div className="card-body">
               <p className="font-thin absolute top-0 right-0 border text-xs bg-base-200  btn btn-xs">
@@ -98,7 +98,7 @@ const RecentBlogPost = () => {
                 {user && user.email ? (
                   <button
                     onClick={() => handleAddToWishlist(blog)}
-                    className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600"
+                    className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black"
                   >
                     Add to Wishlist
                   </button>
@@ -108,7 +108,7 @@ const RecentBlogPost = () => {
                   </button>
                 )}
                 <Link to={`/allBlogPosts/${blog._id}`}>
-                  <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600">
+                  <button className="btn btn-sm text-xs bg-gradient-to-r from-sky-400 to-sky-300 hover:from-sky-500 hover:to-sky-600 dark:text-black">
                     Explore Details
                   </button>
                 </Link>

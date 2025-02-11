@@ -121,7 +121,7 @@ const Navbar = () => {
 
   {/* sun icon */}
   <svg
-    className="swap-off h-10 w-10 fill-current"
+    className="swap-off h-7 w-7 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path
@@ -130,7 +130,7 @@ const Navbar = () => {
 
   {/* moon icon */}
   <svg
-    className="swap-on h-10 w-10 fill-current"
+    className="swap-on h-7 w-7 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path
@@ -153,7 +153,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
+              className="menu menu-sm dropdown-content dark:text-white bg-base-100 rounded-box z-[1] w-52 p-2 shadow mt-6"
             >
               <li>
               <button
@@ -181,7 +181,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content space-y-1 bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content space-y-1  dark:bg-white bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
               <Link
                 to="/auth/login"
