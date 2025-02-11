@@ -78,17 +78,18 @@ const RecentBlogPost = () => {
             key={idx}
             className="card card-compact bg-base-100 shadow-xl p-2  dark:border"
           >
-            <div className="card-body">
-              <p className="font-thin absolute top-0 right-0 border text-xs bg-base-200  btn btn-xs">
-                {blog.category}
-              </p>
-              <figure className="w-full h-48 mx-auto">
+            <figure className="w-full h-48 mx-auto">
                 <img
                   src={blog.imageUrl}
                   alt={blog.title}
                   className="w-full h-full object-cover rounded-lg"
                 />
               </figure>
+            <div className="card-body">
+              <p className="font-light absolute top-0 right-0 border text-xs dark:bg-[#efeeeeea]  text-black btn btn-xs">
+                {blog.category}
+              </p>
+              
               <h2 className="card-title text-base">{blog.title}</h2>
               <p className="text-sm font-light">
                 {" "}

@@ -143,7 +143,7 @@ const AllBlogs = () => {
                     />
                 </figure>
                 <div className="card-body">
-                  <p className="absolute top-0 right-0 border text-xs bg-base-200  btn btn-xs ">{post.category}</p>
+                  <p className="absolute top-0 right-0 border text-xs  dark:bg-[#efeeeeea] text-black btn btn-xs ">{post.category}</p>
                   <h2 className="card-title text-base">{post.title}</h2>
                   <p className="text-sm font-light">
                     Description : {post.shortDescription}
