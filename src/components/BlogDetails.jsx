@@ -70,11 +70,11 @@ const BlogDetails = () => {
       </h1>
       <div className="card dark:border  mb-10 mx-auto bg-base-100 shadow-xl p-2 grid grid-cols-1 md:grid-cols-2">
         <div className="card dark:border w-[90%] mb-10 mx-auto bg-base-100 shadow-xl p-2 grid grid-cols-1">
-          <figure className=" w-[80%] h-[100%]  mx-auto object-cover my-auto">
+          <figure className=" w-full h-full  mx-auto object-cover my-auto">
             <img
               src={selectedPost.imageUrl}
               alt={selectedPost.title}
-              className="object-cover w-[80%] h-[100%] rounded-lg mx-auto my-auto"
+              className="object-cover  rounded-lg mx-auto my-auto"
             />
           </figure>
           <div className="card-body  text-justify ">
@@ -118,7 +118,7 @@ const BlogDetails = () => {
           <h3 className="text-lg  font-bold my-4">What Other Says :</h3>
           <div className="space-y-4 ">
             {comments.map((comment, idx) => (
-              <div key={idx} className="flex dark:bg-transparent items-start gap-4 p-2 bg-gray-100 rounded-lg shadow-sm">
+              <div key={idx} className="flex dark:bg-transparent dark:border-b items-start gap-4 p-2 bg-gray-100 rounded-lg shadow-sm">
                 <img
                   src={comment.userImage}
                   alt={comment.userName}
